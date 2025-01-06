@@ -1,11 +1,12 @@
 import 'dart:convert';
+import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:music/app_colors.dart' as AppColors;
 import 'package:flutter/material.dart';
 import 'package:music/my_tabs.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({super.key});
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -55,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                   Row(
                     children: [
                       Icon(Icons.search),
+                      SizedBox(width: 10),
                       Icon(Icons.notifications),
                     ],
                   )
@@ -77,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 ? Center(
                     child: CircularProgressIndicator(),
                   )
-                : Container(
+                : SizedBox(
                     height: 180,
                     child: Stack(
                       children: [
@@ -85,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                             top: 0,
                             left: -20,
                             right: 0,
-                            child: Container(
+                            child: SizedBox(
                               height: 180,
                               child: PageView.builder(
                                   controller:PageController(viewportFraction: 0.8),
@@ -123,9 +125,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                           child: TabBar(
                             controller: _tabController,
                             isScrollable: true,
-                            indicatorPadding: const EdgeInsets.all(0),
+                            indicatorPadding: EdgeInsets.symmetric(horizontal: 2),
                             indicatorSize: TabBarIndicatorSize.label,
-                            labelPadding: const EdgeInsets.only(right: 10),
+                            labelPadding: const EdgeInsets.symmetric(horizontal: 5),
                             indicator: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 boxShadow: [
@@ -137,11 +139,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                                 ]),
                             tabs: [
                               AppTabs(color: AppColors.menu1Color, text: "new"),
-                              AppTabs(
-                                  color: AppColors.menu2Color, text: "Popular"),
-                              AppTabs(
-                                  color: AppColors.menu3Color,
-                                  text: "Trending"),
+                              AppTabs(color: AppColors.menu2Color, text: "Popular"),
+                              AppTabs(color: AppColors.menu3Color,text: "Trending"),
                             ],
                           ),
                         )),
@@ -152,7 +151,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 ListView.builder(
                   itemCount: books!.length,
                   itemBuilder: (_, i) {
-                  return Container(
+                  return Container(  
                     margin: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
                     child: Container(
                       decoration: BoxDecoration(
@@ -200,8 +199,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                                     borderRadius: BorderRadius.circular(3),
                                     color: AppColors.loveColor,
                                   ),
-                                  child: Text("Love", style: TextStyle(fontSize: 12, color:Colors.white),),
                                   alignment: Alignment.center,
+                                  child: Text("Love", style: TextStyle(fontSize: 12, color:Colors.white),),
                                 )
                               ],
                             )
@@ -264,8 +263,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                                     borderRadius: BorderRadius.circular(3),
                                     color: AppColors.loveColor,
                                   ),
-                                  child: Text("Love", style: TextStyle(fontSize: 12, color:Colors.white),),
                                   alignment: Alignment.center,
+                                  child: Text("Love", style: TextStyle(fontSize: 12, color:Colors.white),),
                                 )
                               ],
                             )
@@ -327,8 +326,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                                     borderRadius: BorderRadius.circular(3),
                                     color: AppColors.loveColor,
                                   ),
-                                  child: Text("Love", style: TextStyle(fontSize: 12, color:Colors.white),),
                                   alignment: Alignment.center,
+                                  child: Text("Love", style: TextStyle(fontSize: 12, color:Colors.white),),
                                 )
                               ],
                             )
