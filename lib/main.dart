@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
+import 'package:music/detail_audio_page.dart';
 import 'my_home_page.dart';
 
 void main() {
   runApp(MyApp());
+  SemanticsBinding.instance.ensureSemantics();
 }
 
 class MyApp extends StatelessWidget {
@@ -14,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Audio Reading',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: MyHomePage(),
+      home: DetailAudioPage(),
     );
   }
 }

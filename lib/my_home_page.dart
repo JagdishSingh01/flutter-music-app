@@ -5,6 +5,7 @@ import 'package:music/app_colors.dart' as AppColors;
 import 'package:flutter/material.dart';
 import 'package:music/my_tabs.dart';
 
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
@@ -125,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                           child: TabBar(
                             controller: _tabController,
                             isScrollable: true,
-                            indicatorPadding: EdgeInsets.symmetric(horizontal: 2),
+                            indicatorPadding:const EdgeInsets.all(0),
                             indicatorSize: TabBarIndicatorSize.label,
                             labelPadding: const EdgeInsets.symmetric(horizontal: 5),
                             indicator: BoxDecoration(
@@ -135,8 +136,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                                     color: Colors.grey.withOpacity(0.2),
                                     blurRadius: 7,
                                     offset: Offset(0, 0),
-                                  )
-                                ]),
+                                  ),
+                                ],
+                              ),
+                             
                             tabs: [
                               AppTabs(color: AppColors.menu1Color, text: "new"),
                               AppTabs(color: AppColors.menu2Color, text: "Popular"),
