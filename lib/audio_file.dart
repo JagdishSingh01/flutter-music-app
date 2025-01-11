@@ -42,12 +42,46 @@ class _AudioFileState extends State<AudioFile> {
   Widget btnStart() {
     return IconButton(
       padding: const EdgeInsets.only(bottom: 10),
-      icon: Icon(_icons[0]),
+      icon: isPlaying == false
+          ? Icon(_icons[0], size: 50, color: Colors.blue)
+          : Icon(_icons[1], size: 50, color: Colors.blue),
       onPressed: () {
-        this.widget.advancedPlayer.play(DeviceFileSource(path));
+        if (isPlaying == false) {
+          this.widget.advancedPlayer.play(DeviceFileSource(path));
+          setState(() {
+            isPlaying = true;
+          });
+        } else if (isPlaying == true) {
+          this.widget.advancedPlayer.pause();
+          setState(() {
+            isPlaying = false;
+          });
+        }
       },
     );
   }
+
+  Widget slider() {
+    return Slider(
+      activeColor: Colors.red,
+      inactiveColor: Colors.grey,
+      value: _position.inSeconds.toDouble(),
+      min: 0.0,
+      max: _duration.inSeconds.toDouble(),
+      onChanged: (double value) {
+        setState(() {
+          changeToSecond(value.toInt());
+          value = value;
+        });
+      },
+    );
+  }
+
+  void changeToSecond(int second) {
+    Duration newDuration = Duration(seconds: second);
+    this.widget.advancedPlayer.seek(newDuration);
+  }
+
 
   Widget loadAsset() {
     return Container(
@@ -61,6 +95,8 @@ class _AudioFileState extends State<AudioFile> {
     );
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -70,9 +106,19 @@ class _AudioFileState extends State<AudioFile> {
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [],
+              children: [
+                Text(
+                  _position.toString().split(".")[0],
+                  style: TextStyle(fontSize: 16),
+                ),
+                Text(
+                  _duration.toString().split(".")[0],
+                  style: TextStyle(fontSize: 16),
+                ),
+              ],
             ),
           ),
+          slider(),
           loadAsset(),
         ],
       ),
