@@ -19,7 +19,7 @@ class AppTabs extends StatelessWidget {
                   offset: Offset(0, 0),),
                 ]
               ),
-              child: Text(this.text, style: TextStyle(color: Colors.white, fontSize: 20),),
+              child: Text(text, style: TextStyle(color: Colors.white, fontSize: 20),),
             );
   }
 }

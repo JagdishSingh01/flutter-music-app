@@ -4,7 +4,9 @@ import 'package:music/app_colors.dart' as AppColors;
 import 'package:music/audio_file.dart';
 
 class DetailAudioPage extends StatefulWidget {
-  const DetailAudioPage({super.key});
+  final booksData;
+  final int index;
+  const DetailAudioPage({super.key, this.booksData, required this.index});
 
   @override
   _DetailAudioPageState createState() => _DetailAudioPageState();
@@ -33,20 +35,21 @@ class _DetailAudioPageState extends State<DetailAudioPage> {
               height: screenHeight / 3,
               child: Container(
                 color: AppColors.audioBlueBackground,
-              )
-            ),
+              )),
           Positioned(
               top: 0,
               left: 0,
               right: 0,
               child: AppBar(
                 leading: IconButton(
-                  icon: Icon(
-                    Icons.arrow_back_ios,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {},
-                ),
+                    icon: Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      advancedPlayer.stop();
+                      Navigator.of(context).pop();
+                    }),
                 actions: [
                   IconButton(
                     icon: Icon(Icons.search, color: Colors.white),
@@ -54,8 +57,7 @@ class _DetailAudioPageState extends State<DetailAudioPage> {
                   )
                 ],
                 backgroundColor: Colors.transparent,
-              )
-            ),
+              )),
           Positioned(
             left: 0,
             right: 0,
@@ -71,16 +73,19 @@ class _DetailAudioPageState extends State<DetailAudioPage> {
                   SizedBox(
                     height: screenHeight * 0.1,
                   ),
-                  Text("THE WATER CURE",
+                  Text(this.widget.booksData[this.widget.index]["title"],
                       style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Avenir')),
                   Text(
-                    "Martin Hyatt",
+                    this.widget.booksData[this.widget.index]["text"],
                     style: TextStyle(fontSize: 20),
                   ),
-                  AudioFile(advancedPlayer:advancedPlayer),
+                  AudioFile(
+                      advancedPlayer: advancedPlayer,
+                      audioPath: this.widget.booksData[this.widget.index]
+                          ["audio"]),
                 ],
               ),
             ),
@@ -103,12 +108,13 @@ class _DetailAudioPageState extends State<DetailAudioPage> {
                       shape: BoxShape.circle,
                       border: Border.all(color: Colors.white, width: 2),
                       image: DecorationImage(
-                          image: AssetImage("img/skel.jpg"), fit: BoxFit.cover),
+                          image: AssetImage(
+                              this.widget.booksData[this.widget.index]["img"]),
+                          fit: BoxFit.cover),
                     ),
                   ),
                 ),
-              )
-          ),
+              )),
         ],
       ),
     );

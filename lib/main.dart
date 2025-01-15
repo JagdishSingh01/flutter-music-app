@@ -16,8 +16,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Audio Reading',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(),
-      home: DetailAudioPage(),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(), 
     );
   }
 }

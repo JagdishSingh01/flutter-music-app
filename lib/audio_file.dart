@@ -4,21 +4,21 @@ import 'package:flutter/cupertino.dart';
 
 class AudioFile extends StatefulWidget {
   final AudioPlayer advancedPlayer;
-  const AudioFile({super.key, required this.advancedPlayer});
+  final String audioPath;
+  const AudioFile({super.key, required this.advancedPlayer, required this.audioPath});
 
   @override
   State<AudioFile> createState() => _AudioFileState();
 }
 
 class _AudioFileState extends State<AudioFile> {
-  Duration _duration = new Duration();
-  Duration _position = new Duration();
-  final String path =
-      "https://drive.google.com/uc?export=download&id=1oYbDiXrVyeqv1nQupzOVTIA2dU05QMqm";
+  Duration _duration = Duration();
+  Duration _position = Duration();
   bool isPlaying = false;
   bool isPaused = false;
-  bool isLoop = false;
-  List<IconData> _icons = [
+  bool isRepeat = false;
+  Color color = Colors.black;
+  final List<IconData> _icons = [
     Icons.play_circle_fill,
     Icons.pause_circle_filled,
   ];
@@ -26,36 +26,107 @@ class _AudioFileState extends State<AudioFile> {
   @override
   void initState() {
     super.initState();
-    this.widget.advancedPlayer.onDurationChanged.listen((d) {
+    widget.advancedPlayer.onDurationChanged.listen((d) {
       setState(() {
         _duration = d;
       });
     });
-    this.widget.advancedPlayer.onPositionChanged.listen((p) {
+    widget.advancedPlayer.onPositionChanged.listen((p) {
       setState(() {
         _position = p;
       });
     });
-    this.widget.advancedPlayer.setSourceUrl(path);
+    widget.advancedPlayer.setSourceUrl(this.widget.audioPath);
+    widget.advancedPlayer.onPlayerComplete.listen((event) {
+      setState(() {
+        _position = Duration(seconds: 0);
+        if (isRepeat == true) {
+          isPlaying = true;
+        } else {
+          isPlaying = false;
+          isRepeat = false;
+        }
+      });
+    });
   }
 
   Widget btnStart() {
     return IconButton(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.all(3),
       icon: isPlaying == false
           ? Icon(_icons[0], size: 50, color: Colors.blue)
           : Icon(_icons[1], size: 50, color: Colors.blue),
       onPressed: () {
         if (isPlaying == false) {
-          this.widget.advancedPlayer.play(DeviceFileSource(path));
+          widget.advancedPlayer.play(DeviceFileSource(this.widget.audioPath));
           setState(() {
             isPlaying = true;
           });
         } else if (isPlaying == true) {
-          this.widget.advancedPlayer.pause();
+          widget.advancedPlayer.pause();
           setState(() {
             isPlaying = false;
           });
+        }
+      },
+    );
+  }
+
+  Widget btnFast() {
+    return IconButton(
+      icon: ImageIcon(
+        AssetImage("img/fast-forward.png"),
+        size: 17,
+        color: Colors.black,
+      ),
+      onPressed: () {
+        widget.advancedPlayer.setPlaybackRate(1.5);
+      },
+    );
+  }
+
+  Widget btnSlow() {
+    return IconButton(
+      icon: ImageIcon(
+        AssetImage("img/slow-backward.png"),
+        size: 17,
+        color: Colors.black,
+      ),
+      onPressed: () {
+        widget.advancedPlayer.setPlaybackRate(0.5);
+      },
+    );
+  }
+
+  Widget btnLoop() {
+    return IconButton(
+      icon: ImageIcon(
+        AssetImage("img/shuffle.png"),
+        size: 17,
+        color: Colors.black,
+      ),
+      onPressed: () {},
+    );
+  }
+
+  Widget btnRepeat() {
+    return IconButton(
+      icon: ImageIcon(
+        AssetImage("img/repeat.png"),
+        size: 17,
+        color: color,
+      ),
+      onPressed: () {
+        if (isRepeat == false) {
+          widget.advancedPlayer.setReleaseMode(ReleaseMode.loop);
+          setState(() {
+            isRepeat = true;
+            color = Colors.blue;
+          });
+        } else if (isRepeat == true) {
+          widget.advancedPlayer.setReleaseMode(ReleaseMode.release);
+          color = Colors.black;
+          isRepeat = false;
         }
       },
     );
@@ -65,7 +136,9 @@ class _AudioFileState extends State<AudioFile> {
     return Slider(
       activeColor: Colors.red,
       inactiveColor: Colors.grey,
-      value: _position.inSeconds.toDouble(),
+      value: _position.inSeconds >= _duration.inSeconds
+          ? _duration.inSeconds.toDouble()
+          : _position.inSeconds.toDouble(),
       min: 0.0,
       max: _duration.inSeconds.toDouble(),
       onChanged: (double value) {
@@ -79,9 +152,8 @@ class _AudioFileState extends State<AudioFile> {
 
   void changeToSecond(int second) {
     Duration newDuration = Duration(seconds: second);
-    this.widget.advancedPlayer.seek(newDuration);
+    widget.advancedPlayer.seek(newDuration);
   }
-
 
   Widget loadAsset() {
     return Container(
@@ -89,13 +161,15 @@ class _AudioFileState extends State<AudioFile> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          btnRepeat(),
+          btnSlow(),
           btnStart(),
+          btnFast(),
+          btnLoop(),
         ],
       ),
     );
   }
-
-
 
   @override
   Widget build(BuildContext context) {

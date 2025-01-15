@@ -1,33 +1,49 @@
 [
     {
         "rating": "4.5",
-        "title": "THE WATER CURE",
-        "text": "Martin Hyatt",
+        "title": "LOVELY",
+        "text": "Billie Eilish",
         "img": "img/randam.jpg",
         "audio": "Voices.mp3"
     },
     {
         "rating": "4.6",
-        "title": "PEACE LIFE",
-        "text": "Hazard Bin",
+        "title": "FALTU",
+        "text": "Jaggi Amargarh",
         "img": "img/bear.jpg",
-        "audio": "June - Bobby Richards.mp3"
+        "audio": "https://drive.google.com/uc?export=download&id=1aui3kuyXypK-vE1bqMsT24XBJCg0PfRW "
     },
     
     {
         "rating": "4.5",
-        "title": "DAY REMEMBER",
-        "text": "Nicholos",
+        "title": "MERE NAAM TU",
+        "text": "Abhay Jodhpurkar",
         "img": "img/singer.jpg",
-        "audio": "Muriel - Bobby Richards.mp3"
+        "audio": "https://drive.google.com/uc?export=download&id=1-o4e_Betf46En6ILTSvGMRmyA1fR5p7C"
     },
     
     {
         "rating": "4.5",
-        "title": "FRANCE",
-        "text": "Paris",
+        "title": "ARE ARE ARE",
+        "text": "G. Sahithi",
         "img": "img/cd.jpg",
-        "audio": "Piano Trap.mp3"
+        "audio": "https://drive.google.com/uc?export=download&id=1hHcQQsCV4gtwnlNo5-ND9PdkUDgDmf8w"
+    },
+
+    {
+        "rating": "4.5",
+        "title": "TERA CHEHRA",
+        "text": "Arijit Singh",
+        "img": "img/cd.jpg",
+        "audio": "https://drive.google.com/uc?export=download&id=1gedoz7OVRFp8C_irG4pWhvnFyVzJ0XsR"
+    },
+
+    {
+        "rating": "4.5",
+        "title": "HUMSAFAR",
+        "text": "Udit Narayan",
+        "img": "img/cd.jpg",
+        "audio": "https://drive.google.com/uc?export=download&id=1VAlmiKsgLJVpfwaM6JPS7McDu7c8Jmum"
     }
 
 ]
