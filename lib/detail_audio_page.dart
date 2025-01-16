@@ -97,7 +97,7 @@ class _DetailAudioPageState extends State<DetailAudioPage> {
               height: screenHeight * 0.16,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: const Color.fromARGB(255, 237, 245, 252),
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(color: Colors.white, width: 2),
                 ),

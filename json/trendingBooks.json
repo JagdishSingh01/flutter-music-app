@@ -1,0 +1,49 @@
+[
+    {
+        "rating": "4.5",
+        "title": "DARKSIDE",
+        "text": "Neone",
+        "img": "img/randam.jpg",
+        "audio": "https://drive.google.com/uc?export=download&id=1ZqliX4dWwwJAR8IyXVGZXdWbce6-NrHZ"
+    },
+    {
+        "rating": "4.6",
+        "title": "KALKI AUR KALII",
+        "text": "Narci",
+        "img": "img/bear.jpg",
+        "audio": "https://drive.google.com/uc?export=download&id=1nXJawjbTQ_eTxCU-f4CsvEnoh6ivrJaX"
+    },
+    
+    {
+        "rating": "4.5",
+        "title": "DIE WITH A SMILE",
+        "text": "Bruno Mars",
+        "img": "img/singer.jpg",
+        "audio": "https://drive.google.com/uc?export=download&id=1WpFHcOOInLHbeJQGag4QyemK15ZhErx9"
+    },
+    
+    {
+        "rating": "4.5",
+        "title": "TERE PYAAR MEIN",
+        "text": "Arijit, Nikhita",
+        "img": "img/cd.jpg",
+        "audio": "https://drive.google.com/uc?export=download&id=1QSmfdJEefaql3iSzPpbnU6ETsXhmsDNC"
+    },
+
+    {
+        "rating": "4.5",
+        "title": "FRIENDS",
+        "text": "Anne Marie",
+        "img": "img/beach.jpg",
+        "audio": "https://drive.google.com/uc?export=download&id=1WfilLvzQh9hKXMqt93BCKXPXW37pUd3n"
+    },
+
+    {
+        "rating": "4.5",
+        "title": "7 YEARS",
+        "text": "Lukas Graham",
+        "img": "img/fest.jpg",
+        "audio": "https://drive.google.com/uc?export=download&id=1joCp1j9Lyo_qbEd4zdb_ZdUqPOt_vq8F"
+    }
+
+]

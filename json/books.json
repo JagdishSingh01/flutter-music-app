@@ -4,7 +4,7 @@
         "title": "LOVELY",
         "text": "Billie Eilish",
         "img": "img/randam.jpg",
-        "audio": "Voices.mp3"
+        "audio": "https://drive.google.com/uc?export=download&id=1oYbDiXrVyeqv1nQupzOVTIA2dU05QMqm"
     },
     {
         "rating": "4.6",
@@ -34,7 +34,7 @@
         "rating": "4.5",
         "title": "TERA CHEHRA",
         "text": "Arijit Singh",
-        "img": "img/cd.jpg",
+        "img": "img/beach.jpg",
         "audio": "https://drive.google.com/uc?export=download&id=1gedoz7OVRFp8C_irG4pWhvnFyVzJ0XsR"
     },
 
@@ -42,7 +42,7 @@
         "rating": "4.5",
         "title": "HUMSAFAR",
         "text": "Udit Narayan",
-        "img": "img/cd.jpg",
+        "img": "img/fest.jpg",
         "audio": "https://drive.google.com/uc?export=download&id=1VAlmiKsgLJVpfwaM6JPS7McDu7c8Jmum"
     }
 

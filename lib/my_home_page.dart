@@ -14,8 +14,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
-  List<dynamic>? popularBooks;
+  List<dynamic>? popularSongs;
+   List<dynamic>? popularBooks;
   List<dynamic>? books;
+  List<dynamic>? trendingBooks;
   late ScrollController _scrollController;
   late TabController _tabController;
   ReadData() async {
@@ -24,6 +26,20 @@ class _MyHomePageState extends State<MyHomePage>
         .then((s) {
       setState(() {
         popularBooks = json.decode(s);
+      });
+    });
+    await DefaultAssetBundle.of(context)
+        .loadString("json/trendingBooks.json")
+        .then((s) {
+      setState(() {
+        trendingBooks = json.decode(s);
+      });
+    });
+    await DefaultAssetBundle.of(context)
+        .loadString("json/popularSongs.json")
+        .then((s) {
+      setState(() {
+        popularSongs = json.decode(s);
       });
     });
     await DefaultAssetBundle.of(context)
@@ -258,13 +274,13 @@ class _MyHomePageState extends State<MyHomePage>
                     }),
                
                 ListView.builder(
-                    itemCount: books!.length,
+                    itemCount: popularSongs!.length,
                     itemBuilder: (_, i) {
                       return GestureDetector(
                         onTap: () {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => DetailAudioPage(booksData:books, index: i)));
+                              MaterialPageRoute(builder: (context) => DetailAudioPage(booksData:popularSongs, index: i)));
                         },
                         child: Container(
                           margin: EdgeInsets.only(
@@ -290,7 +306,7 @@ class _MyHomePageState extends State<MyHomePage>
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(15),
                                         image: DecorationImage(
-                                          image: AssetImage(books![i]["img"]),
+                                          image: AssetImage(popularSongs![i]["img"]),
                                         )),
                                   ),
                                   SizedBox(
@@ -311,21 +327,21 @@ class _MyHomePageState extends State<MyHomePage>
                                             width: 5,
                                           ),
                                           Text(
-                                            books![i]["rating"],
+                                            popularSongs![i]["rating"],
                                             style: TextStyle(
                                                 color: AppColors.menu2Color),
                                           )
                                         ],
                                       ),
                                       Text(
-                                        books![i]["title"],
+                                        popularSongs![i]["title"],
                                         style: TextStyle(
                                             fontSize: 16,
                                             fontFamily: "Avenir",
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Text(
-                                        books![i]["text"],
+                                        popularSongs![i]["text"],
                                         style: TextStyle(
                                             fontSize: 16,
                                             fontFamily: "Avenir",
@@ -358,13 +374,13 @@ class _MyHomePageState extends State<MyHomePage>
                     }),
 
                 ListView.builder(
-                    itemCount: books!.length,
+                    itemCount: trendingBooks!.length,
                     itemBuilder: (_, i) {
                       return GestureDetector(
                         onTap: () {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => DetailAudioPage(booksData:books, index: i)));
+                              MaterialPageRoute(builder: (context) => DetailAudioPage(booksData:trendingBooks, index: i)));
                         },
                         child: Container(
                           margin: EdgeInsets.only(
@@ -390,7 +406,7 @@ class _MyHomePageState extends State<MyHomePage>
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(15),
                                         image: DecorationImage(
-                                          image: AssetImage(books![i]["img"]),
+                                          image: AssetImage(trendingBooks![i]["img"]),
                                         )),
                                   ),
                                   SizedBox(
@@ -411,21 +427,21 @@ class _MyHomePageState extends State<MyHomePage>
                                             width: 5,
                                           ),
                                           Text(
-                                            books![i]["rating"],
+                                            trendingBooks![i]["rating"],
                                             style: TextStyle(
                                                 color: AppColors.menu2Color),
                                           )
                                         ],
                                       ),
                                       Text(
-                                        books![i]["title"],
+                                        trendingBooks![i]["title"],
                                         style: TextStyle(
                                             fontSize: 16,
                                             fontFamily: "Avenir",
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Text(
-                                        books![i]["text"],
+                                        trendingBooks![i]["text"],
                                         style: TextStyle(
                                             fontSize: 16,
                                             fontFamily: "Avenir",
