@@ -173,7 +173,9 @@ class _MyHomePageState extends State<MyHomePage>
                 ];
               },
               body: TabBarView(controller: _tabController, children: [
-                ListView.builder(
+                books == null
+                ? Center(child: CircularProgressIndicator())
+                :ListView.builder(
                     itemCount: books!.length,
                     itemBuilder: (_, i) {
                       return GestureDetector(
@@ -272,8 +274,10 @@ class _MyHomePageState extends State<MyHomePage>
                         ),
                       );
                     }),
-               
-                ListView.builder(
+
+              popularBooks == null
+                ? Center(child: CircularProgressIndicator())
+                :ListView.builder(
                     itemCount: popularSongs!.length,
                     itemBuilder: (_, i) {
                       return GestureDetector(
@@ -373,7 +377,9 @@ class _MyHomePageState extends State<MyHomePage>
                       );
                     }),
 
-                ListView.builder(
+              trendingBooks == null
+                ? Center(child: CircularProgressIndicator())
+                :ListView.builder(
                     itemCount: trendingBooks!.length,
                     itemBuilder: (_, i) {
                       return GestureDetector(

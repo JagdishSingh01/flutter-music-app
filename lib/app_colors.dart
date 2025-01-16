@@ -11,5 +11,4 @@ final Color subTitleText = Color(0xFFc5c4ca);
 final Color loveColor = Color(0xFF00ace6);
 final Color audioBlueBackground = Color(0xFF04abe7);
 final Color audioGreyBackground = Color(0xFFf2f2f2);
-final Color audioBluishBackground=Color.fromARGB(255, 207, 219, 247);
-final Color orgaudioBluishBackground=Color(0xFfdee7fa);
+final Color audioBluishBackground=Color(0xFfdee7fa);
